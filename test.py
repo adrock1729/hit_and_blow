@@ -10,7 +10,7 @@ if __name__ == '__main__':
     # targetの数
     num = 1000
     # 総質問回数
-    score = 0
+    score = []
     # reduction_neighborsを使うHB値の条件
     red_list = [[0, 0], [0, 1], [0, 2], [0, 3], [1, 0], [1, 1]]
     # 最大質問回数
@@ -19,7 +19,7 @@ if __name__ == '__main__':
     # 正しければ　＋１される
     check = 0
     # targetをANから取得する前にANをシャッフルするか
-    shuffle_num = True
+    shuffle_num = False
     an = AN
     if shuffle_num:
         shuffle(an)
@@ -39,15 +39,17 @@ if __name__ == '__main__':
                 x = neighbors[0]
             [h, b] = HB(target, x)
             neighbors = intersect(neighbors, Nhb(x, h, b))
-            if h != 4:
-                count += 1
+            count += 1
             # print('%d 回目の質問:' % count, x)
             # print('Hit and Blow:', h, b)
             # print('Neighbors size:', len(neighbors))
         if count > max:
             max = count
-        score += count
+        score.append(count)
         check += int(target == x)
-    print('平均質問回数: ', score / num, '回')
+    print('平均質問回数: ', sum(score) / num, '回')
     print('最大質問回数: ', max)
     print('error:', num - check)
+
+    for i in range(1, max):
+        print('質問回数', i, '回: ', score.count(i))

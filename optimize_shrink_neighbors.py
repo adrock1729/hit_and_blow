@@ -1,12 +1,12 @@
 from const import HBs, AN
 from calculateHB import HB
 from random import sample
-from math import log2
+import numpy as np
 
 
 # 分布に対するエントロピーの定義
 def entropy(dist, eps=1e-8):
-    return -1 * sum([d*log2(d + eps) for d in dist])
+    return -1 * sum([d*np.log2(d + eps) for d in dist])
 
 
 # neighbor(HBの値から計算される答えの可能性がある選択肢全体、近傍)
