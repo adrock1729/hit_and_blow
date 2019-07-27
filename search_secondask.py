@@ -21,5 +21,5 @@ if __name__ == "__main__":
     with open('second_asks.txt', 'w+') as f:
         for i in range(14):
             [h, b] = HBs[i]
-            result = "{}, {}, {}\n".format(h, b, optimized_second_asks[i])
+            result = "[{}, {}], {}\n".format(h, b, optimized_second_asks[i])
             f.write(result)
