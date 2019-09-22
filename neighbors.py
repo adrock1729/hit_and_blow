@@ -1,6 +1,7 @@
 from calculateHB import HB
 from const import AN
 
+
 # リストの共通部分をとる。
 def intersect(l1, l2):
     return list(filter(lambda x: x in l1, l2))
